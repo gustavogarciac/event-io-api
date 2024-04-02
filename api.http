@@ -2,21 +2,25 @@ POST http://localhost:3333/events
 Content-Type: application/json
 
 {
-  "title": "New Event 2",
-  "details": null,
-  "maximumAttendees": 1
+  "title": "Alpha Horizon",
+  "details": "A conference for developers",
+  "maximumAttendees": 150
 }
 
 ###
 
-POST http://localhost:3333/events/2ed8d88d-7bca-49e7-aea3-3186dc4913fa/attendees
+POST http://localhost:3333/events/99315c00-e775-4240-86dc-6afc398e4e35/attendees
 Content-Type: application/json
 
 {
   "name": "John Doe",
-  "email": "johndoe2@email.com"
+  "email": "johndoe1@email.com"
 }
 
 ###
 
 GET http://localhost:3333/events/2ed8d88d-7bca-49e7-aea3-3186dc4913fa
+
+###
+
+GET http://localhost:3333/attendees/232f7e419d/badge

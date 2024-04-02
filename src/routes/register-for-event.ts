@@ -2,6 +2,7 @@ import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
 import { prisma } from "../lib/prisma";
+import { customAlphabet } from "nanoid/non-secure";
 
 export async function registerForEvent(app: FastifyInstance) {
   app
@@ -17,7 +18,7 @@ export async function registerForEvent(app: FastifyInstance) {
         }),
         response: {
           201: z.object({
-            attendeeId: z.number()
+            attendeeId: z.string()
           })
         }
       }
@@ -58,13 +59,14 @@ export async function registerForEvent(app: FastifyInstance) {
 
       const attendee = await prisma.attendee.create({
         data: {
+          publicId: customAlphabet('1234567890abcdef', 10)(),
           name,
           email,
           eventId
         }
       })
 
-      return reply.status(201).send({ attendeeId: attendee.id })
+      return reply.status(201).send({ attendeeId: attendee.publicId })
     })
 
 }
