@@ -16,13 +16,7 @@ export async function createEvent(app: FastifyInstance) {
       }),
       response: {
         201: z.object({
-          event: z.object({
-            id: z.string(),
-            title: z.string(),
-            details: z.string().nullable(),
-            maximumAttendees: z.number().int().positive().nullable(),
-            slug: z.string(),
-          }),
+          eventId: z.string()
         })
       }
     }
@@ -55,6 +49,6 @@ export async function createEvent(app: FastifyInstance) {
     }
   })
 
-  return reply.status(201).send({event})
+  return reply.status(201).send({ eventId: event.id })
 })
 }
