@@ -2,14 +2,14 @@ POST http://localhost:3333/events
 Content-Type: application/json
 
 {
-  "title": "Alpha Horizon",
+  "title": "Testing Conference",
   "details": "A conference for developers",
   "maximumAttendees": 150
 }
 
 ###
 
-POST http://localhost:3333/events/99315c00-e775-4240-86dc-6afc398e4e35/attendees
+POST http://localhost:3333/events/8beca352-9c53-4b55-8bc4-512af96d7efc/attendees
 Content-Type: application/json
 
 {
@@ -19,12 +19,15 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3333/events/2ed8d88d-7bca-49e7-aea3-3186dc4913fa
+GET http://localhost:3333/events/8beca352-9c53-4b55-8bc4-512af96d7efc
+###
+
+GET http://localhost:3333/attendees/4652e889aa/badge
 
 ###
 
-GET http://localhost:3333/attendees/232f7e419d/badge
+GET http://localhost:3333/attendees/4652e889aa/check-in
 
 ###
 
-GET http://localhost:3333/attendees/232f7e419d/check-in
+GET http://localhost:3333/events/8beca352-9c53-4b55-8bc4-512af96d7efc/attendees?query=John
